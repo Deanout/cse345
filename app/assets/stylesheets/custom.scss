@@ -1,0 +1,60 @@
+/* Change the white to any color ;) */
+input:-webkit-autofill,
+ input:-webkit-autofill:hover,
+ input:-webkit-autofill:focus,
+ input:-webkit-autofill:active {
+ -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  }
+.input-box {
+  border-style: solid;
+  border-width: 5px;
+  border-color:black;
+}
+#alert_wrapper {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    z-index: 1250;
+    background: rgba(255, 73, 73, 0.85);
+
+    .alert {
+        padding: 1.85rem 0;
+        text-align: center;
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: white;
+        letter-spacing: 1px;
+    }
+}
+
+#notice_wrapper {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    z-index: 1250;
+    background: rgba(150, 228, 255, 0.85);
+
+    .notice {
+        padding: 1.85rem 0;
+        text-align: center;
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: bold;
+        color: white;
+        letter-spacing: 1px;
+    }
+}
+
+html {
+  height: 100%;
+}
+
+body {
+    height: 100%;
+    min-height: 100%;
+    font-family: 'Raleway', sans-serif;
+    /* Margin bottom by footer height */
+    padding-top: 4em;
+    margin-bottom: 4em;
+}

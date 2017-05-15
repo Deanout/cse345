@@ -1,0 +1,76 @@
+<div class="col-md-2 col-lg-2 hidden-xs hidden-sm">
+    <ul id="sidebar" class="nav nav-stacked affix">
+        <hr>
+        <div class="social-midsection container-fluid">
+            <div id="image-gallery-3" class="cf">
+                <a href="/ckeditor_assets/pictures/1/content_14882269_1391608724182683_8593940797768432893_o_1.jpg" alt="" class="fullsizable img-responsive sidebar-profile">
+                  <img src="/ckeditor_assets/pictures/1/content_14882269_1391608724182683_8593940797768432893_o_1.jpg" alt="" class="img-responsive sidebar-profile">
+                </a>
+            </div>
+            <h3 class="sidebar-brand">
+                
+            </h1>
+            <hr>
+            <div class="container-fluid" style="text-align:justify; margin-left:2px; margin-right:2px;">
+
+                </p>
+            </div>
+            <hr>
+        </div>
+        <div class="social-container container-fluid">
+            <li class="sidebar-brand">
+                <h4>Social</h4>
+            </li>
+            <li>
+                <a class="faa-parent animated-hover hvr-bounce-to-right" href="http://facebook.com/TheDeanout" target="_blank">
+                    <i class="fa fa-fw fa-facebook faa-tada faa-fast fa-2x"></i>
+                    Facebook
+                </a>
+            </li>
+            <li>
+                <a class="faa-parent animated-hover hvr-bounce-to-right" href="http://twitter.com/Dean_DeHart" target="_blank">
+                    <i class="fa fa-fw fa-twitter faa-tada faa-fast fa-2x"></i>
+                    Twitter
+                </a>
+            </li>
+            <li>
+                <a class="faa-parent animated-hover hvr-bounce-to-right" href="http://github.com/Deanout" target="_blank">
+                    <i class="fa fa-fw fa-github faa-tada faa-fast fa-2x"></i>
+                    GitHub
+                </a>
+            </li>
+            <li>
+                <a class="faa-parent animated-hover hvr-bounce-to-right" href="http://gaming.youtube.com/deanout" target="_blank">
+                    <i class="fa fa-fw fa-youtube-play faa-tada faa-fast fa-2x"></i>
+                    YouTube
+                </a>
+            </li>
+            <li>
+                <a class="faa-parent animated-hover hvr-bounce-to-right" href="http://instagram.com/deanout_" target="_blank">
+                    <i class="fa fa-fw fa-instagram faa-tada faa-fast fa-2x"></i>
+                    Instagram
+                </a>
+            </li>
+        </li>
+        <hr>
+        <% if !current_user.nil? && is_admin? %>
+        <li><%= link_to "#{pluralize(User.online.count, 'User')} Online", accounts_path, class:'hvr-bounce-to-right' %>
+        </li>
+        <li><%= link_to 'New Blog', new_blog_path, :'data-no-turbolink' => true, class:'hvr-bounce-to-right' %></li>
+        <hr>
+        <% end %>
+        <br><br>
+    </div>
+</ul>
+</div>
+<script>
+//Example 3
+$(function () {
+    $('.pannable-image').ImageViewer();
+});
+</script>
+<script>
+$(function () {
+    $('a.fullsizable').fullsizable();
+});
+</script>

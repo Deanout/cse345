@@ -1,0 +1,70 @@
+<!--FONT AWESOME CDN LINK FOR FONT-AWESOME FONT -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<nav class="navbar navbar-default fadein navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse">
+                <i class="fa fa-chevron-down faa-vertical animated"></i>
+            </a>
+            <a tabindex="0" class="navbar-brand navbar-brand-centered faa-parent animated-hover" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="bottom" data-title="Brand Quote..." href="../">
+                <i class="fa faa-spin fa-lg">C</i>
+                <i class="fa faa-spin fa-lg">O</i>
+                <i class="fa faa-spin fa-lg">L</i>
+                <i class="fa faa-spin fa-lg">L</i>
+                <i class="fa faa-spin fa-lg">E</i>
+                <i class="fa faa-spin fa-lg">G</i>
+                <i class="fa faa-spin fa-lg">E</i>
+                <i class="fa faa-spin fa-chevron-left"></i>
+                <i class="fa faa-spin fa-chevron-left"></i>
+                <i class="fa faa-spin fa-lg">C</i>
+                <i class="fa faa-spin fa-lg">O</i>
+                <i class="fa faa-spin fa-lg">R</i>
+                <i class="fa faa-spin fa-lg">N</i>
+                <i class="fa faa-spin fa-lg">E</i>
+                <i class="fa faa-spin fa-lg">R</i>
+            </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse ">
+            <ul class="nav navbar-nav">
+
+            </ul>
+            <ul class="nav navbar-nav">
+              <li><%= link_to root_path, :"data-no-turbolink" => true, class:"faa-parent animated-hover"  do %>
+                   <i class="fa fa-fw fa-rss faa-tada faa-fast fa-lg"></i>
+                   <span><%= "Test Link"%></span>
+                   <% end %>
+               </li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <% if current_user %>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="display:none">
+                        <a class="faa-parent animated-hover">
+                            <i class="fa fa-fw fa-sign-out faa-burst faa-fast"></i>
+                            <span><%= current_user.username %></span>
+                        </a>
+                    </a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><%= link_to "Account Management", edit_user_registration_path %></li>
+                        <li role="separator" class="divider"></li>
+                        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+                    </ul>
+                </li>
+            <% else %>
+
+                <li><%= link_to new_user_registration_path, :"data-no-turbolink" => true, class:"faa-parent"  do %>
+                    <i class="fa fa-fw fa-user-plus fa-lg"></i>
+                    <span>SIGNUP</span>
+                    <% end %>
+                </li>
+                <li><%= link_to new_user_session_path, :"data-no-turbolink" => true, class:"faa-parent animated-hover"  do %>
+                    <i class="fa fa-fw fa-sign-in faa-horizontal faa-slow fa-lg"></i>
+                    <span>LOGIN</span>
+                    <% end %>
+                </li>
+                <% end %>
+            </ul>
+        </div>
+    </div>
+</nav>
