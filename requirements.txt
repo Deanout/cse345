@@ -1,0 +1,13 @@
+Project is a Craigslist clone.
+1. College Club
+2. User must have a valid student ID during user registration.
+#####
+1. Must have viewable event list that contains a list of enrolled students.
+#####
+1. Trader Joe's corner (Exchanging items)
+2. Services? (Tutoring, etc...)
+3. Others? (Roomates, etc...)
+4. A member can search postings by classified.
+5. Ability to contact another user.
+6. CRUD Abilities for own posts.
+7. "A member can also view contacting activities through the site."
