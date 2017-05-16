@@ -1,29 +1,31 @@
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
+    # Include default devise modules. Others available are:
+    # :confirmable, :lockable, :timeoutable and :omniauthable
+    devise :database_authenticatable, :registerable,
+           :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
+    attr_writer :login
+    scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
 
     validates :username,
-     :presence => true,
-     :uniqueness => {
-       :case_sensitive => false
-     } # etc.
-     validate :validate_username
+              presence: true,
+              uniqueness: {
+                  case_sensitive: false
+              } # etc.
+    extend FriendlyId
+    friendly_id :username, use: :slugged
 
-def validate_username
-  if User.where(email: username).exists?
-    errors.add(:username, :invalid)
-  end
-end
-    def login=(login)
-      @login = login
+    validate :validate_username
+    def validate_username
+        errors.add(:username, :invalid) if User.where(email: username).exists?
     end
 
     def login
-      @login || self.username || self.email
+        @login || username || email
     end
+    def online?
+      updated_at > 10.minutes.ago
+    end
+
     def self.find_first_by_auth_conditions(warden_conditions)
         conditions = warden_conditions.dup
         if login = conditions.delete(:login)

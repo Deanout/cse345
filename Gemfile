@@ -40,6 +40,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
+gem 'friendly_id'
 #####
 
 group :development, :test do
