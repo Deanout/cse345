@@ -38,8 +38,8 @@ gem 'jbuilder', '~> 2.5'
 #####
 # Begin Custom Gems
 gem 'devise'
-gem 'bootstrap', '~> 4.0.0.alpha6'
-
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'simple_form'
 #####
 
 group :development, :test do

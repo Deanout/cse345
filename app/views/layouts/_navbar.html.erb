@@ -1,42 +1,39 @@
-<!--FONT AWESOME CDN LINK FOR FONT-AWESOME FONT -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-<nav class="navbar navbar-default fadein navbar-fixed-top">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-toggle collapsed" data-target="#navbar" data-toggle="collapse">
-                <i class="fa fa-chevron-down faa-vertical animated"></i>
-            </a>
-            <a tabindex="0" class="navbar-brand navbar-brand-centered faa-parent animated-hover" data-toggle="popover" data-trigger="focus" data-html="true" data-placement="bottom" data-title="Brand Quote..." href="../">
-                <i class="fa faa-spin fa-lg">C</i>
-                <i class="fa faa-spin fa-lg">O</i>
-                <i class="fa faa-spin fa-lg">L</i>
-                <i class="fa faa-spin fa-lg">L</i>
-                <i class="fa faa-spin fa-lg">E</i>
-                <i class="fa faa-spin fa-lg">G</i>
-                <i class="fa faa-spin fa-lg">E</i>
-                <i class="fa faa-spin fa-chevron-left"></i>
-                <i class="fa faa-spin fa-chevron-left"></i>
-                <i class="fa faa-spin fa-lg">C</i>
-                <i class="fa faa-spin fa-lg">O</i>
-                <i class="fa faa-spin fa-lg">R</i>
-                <i class="fa faa-spin fa-lg">N</i>
-                <i class="fa faa-spin fa-lg">E</i>
-                <i class="fa faa-spin fa-lg">R</i>
-            </a>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">COLLEGE CORNER</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Link</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Separated link</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
         </div>
-        <div id="navbar" class="navbar-collapse collapse ">
-            <ul class="nav navbar-nav">
-
-            </ul>
-            <ul class="nav navbar-nav">
-              <li><%= link_to root_path, :"data-no-turbolink" => true, class:"faa-parent animated-hover"  do %>
-                   <i class="fa fa-fw fa-rss faa-tada faa-fast fa-lg"></i>
-                   <span><%= "Test Link"%></span>
-                   <% end %>
-               </li>
-
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
                 <% if current_user %>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="display:none">
@@ -65,6 +62,6 @@
                 </li>
                 <% end %>
             </ul>
-        </div>
     </div>
+  </div>
 </nav>
