@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  body: MyText
+  event_date: 2017-05-17
+  event_time: 2017-05-17 18:58:12
+  enroll: false
+  user_id: 1
+
+two:
+  title: MyString
+  body: MyText
+  event_date: 2017-05-17
+  event_time: 2017-05-17 18:58:12
+  enroll: false
+  user_id: 1
