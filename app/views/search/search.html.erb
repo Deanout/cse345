@@ -1,4 +1,22 @@
+<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
+<% if @events.present? %>
 <% @events.each do |event| %>
 <%= event.title %>
 <br>
 <% end %>
+<% else %>
+<div class="alert alert-dismissible alert-danger text-center alert">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <strong>Oh snap!</strong>
+    There are no results containing the
+    <%= "term".pluralize(params[:search].split.count) %>:
+    <%= params[:search] %>.
+</div>
+<div>
+    <%= form_tag(search_path, :method => "get", class: 'input-group') do %>
+    <%= text_field_tag :search, params[:search], placeholder: 'Search . . .', class:'form-control' %>
+    <span class='input-group-btn'><%= submit_tag "Search", class: 'btn btn-default' %></span>
+    <% end %>
+</div>
+<% end %>
+</div>
