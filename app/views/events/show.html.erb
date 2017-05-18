@@ -1,34 +1,21 @@
-<p id="notice"><%= notice %></p>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+    <!-- Preview Image -->
+    <!-- Title -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1 style="text-align:center">
+                <%= link_to @event.title, events_path %></h1>
+            <p class="lead" style="text-align:center">Posted by
+                <a href="#"><%= link_to User.find(@event.user_id).username, "#" %></a>
+                <span class="glyphicon glyphicon-time"></span>
+                <%= @event.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
+            <p></div>
+              <div class="panel-body">
+                <p><strong>This event starts at <%= @event.event_time.strftime("%l:%M %p on %B %d, %Y ") %>.</strong>
+                <%= link_to ' Back', events_path, class: 'pull-right' %></p>
+              </div>
+              <div class="panel-footer"><%= @event.body %></div>
+        </div>
 
-<p>
-  <strong>Body:</strong>
-  <%= @event.body %>
-</p>
-
-<p>
-  <strong>Event date:</strong>
-  <%= @event.event_date %>
-</p>
-
-<p>
-  <strong>Event time:</strong>
-  <%= @event.event_time %>
-</p>
-
-<p>
-  <strong>Enroll:</strong>
-  <%= @event.enroll %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @event.user_id %>
-</p>
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+    </div>
