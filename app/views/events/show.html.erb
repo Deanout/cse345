@@ -1,5 +1,4 @@
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
     <!-- Preview Image -->
     <!-- Title -->
     <div class="panel panel-default">
@@ -13,9 +12,8 @@
             <p></div>
               <div class="panel-body">
                 <p><strong>This event starts at <%= @event.event_time.strftime("%l:%M %p on %B %d, %Y ") %>.</strong>
-                <%= link_to ' Back', events_path, class: 'pull-right' %></p>
+                <%= link_to 'All Events', events_path, class: 'btn btn-primary pull-right' %></p>
               </div>
-              <div class="panel-footer"><%= @event.body %></div>
+              <div class="panel-footer event-body"><%= @event.body %></div>
         </div>
-
     </div>
