@@ -12,15 +12,18 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li>
+                <li class="<%= 'active' if current_page?(events_path) %>">
                     <a href="<%= events_path %>">Events</a>
                 </li>
 
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Classifieds
+                    <a href="<%= posts_path %>" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                       aria-expanded="false">Classifieds
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu" role="menu">
+                      <li><a href="<%= posts_path %>">View All </a></li>
+                      <li class="divider"></li>
                         <% @tag = Tag.all %>
                         <% @tag.each do |tag| %>
                         <% if tag.id % 2 == 1 %>
