@@ -6,6 +6,10 @@ class User < ApplicationRecord
     attr_writer :login
     scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
     belongs_to :event
+
+    acts_as_messageable
+
+
     validates :username,
               presence: true,
               uniqueness: {
@@ -18,7 +22,9 @@ class User < ApplicationRecord
     def validate_username
         errors.add(:username, :invalid) if User.where(email: username).exists?
     end
-
+    def mailboxer_email(object)
+      return email
+    end
     def login
         @login || username || email
     end
