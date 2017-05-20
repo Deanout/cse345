@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170518200439) do
+ActiveRecord::Schema.define(version: 20170519195901) do
 
   create_table "events", force: :cascade do |t|
     t.string   "title"
@@ -35,6 +35,28 @@ ActiveRecord::Schema.define(version: 20170518200439) do
     t.index ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "taggables", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -51,9 +73,11 @@ ActiveRecord::Schema.define(version: 20170518200439) do
     t.string   "username"
     t.string   "slug"
     t.boolean  "admin",                  default: false
+    t.integer  "student_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["slug"], name: "index_users_on_slug", unique: true
+    t.index ["student_id"], name: "index_users_on_student_id", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
