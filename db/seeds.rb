@@ -8,7 +8,8 @@
 50.times do |counter|
   user = User.create(:email => Forgery('email').address,
   :username => Forgery('name').last_name,
-  :password => 'password')
+  :password => 'password',
+  :student_id => Random.rand(1000..9999))
   user.save
 end
 50.times do |counter|

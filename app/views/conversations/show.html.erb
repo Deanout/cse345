@@ -1,8 +1,18 @@
-<h1> <%= @conversation.subject %> </h1>
+<% @conversation.receipts_for(current_user).each do |receipt| %>
+<div class="well">
+    <h3><%= receipt.message.sender.username %></h3>
+    <strong><%= receipt.message.subject %></strong>
+    <div class="pull-right">Sent at
+        <%= receipt.message.created_at.strftime("%l:%M %p on %B %d, %Y ") %></div>
 
-<% @conversation.receipts.each do |receipt| %>
-<div>
-  <%= receipt.message.sender.username %>:
-  <%= receipt.message.body %>
+    <hr>
+    <p><%= receipt.message.body %></p>
 </div>
+<% end %>
+
+<%= form_tag conversation_messages_path(@conversation), method: :post do %>
+<div>
+    <%= text_area_tag :body %>
+</div>
+<%= submit_tag %>
 <% end %>
