@@ -1,0 +1,5 @@
+<% @trash.each do |conversation| %>
+<div>
+    <%= link_to conversation.subject, conversation_path(conversation) %>
+</div>
+<% end %>

@@ -1,5 +1,6 @@
 class ConversationsController < ApplicationController
   before_action :authenticate_user!
+
   def index
     # Can also grab inbox, trash, sent instead of just all conversations
     # @conversations = current_user.mailbox.conversations
@@ -7,6 +8,7 @@ class ConversationsController < ApplicationController
     @sent = @mailbox.sentbox
     @trash = @mailbox.trash
     @conversations = @mailbox.inbox
+
   end
 
   def show

@@ -1,24 +1,37 @@
-<h1 style="text-align:center">All Conversations</h1>
+<h1 style="text-align:center">Conversation Corner</h1>
 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-lg-offset-2 col-md-offset-2">
-    <%= link_to "Compose", new_conversation_path, class:'btn btn-success' %>
-    <br><br>
     <ul class="nav nav-pills nav-stacked well">
-        <li><!-- .receipts.where(:is_read => false).count -->
-            <a href="#">Inbox [<%= current_user.unread_inbox_count %>]</a>
+        <h3 style="text-align:center">Mail</h3>
+        <hr>
+            <%= link_to "Compose", new_conversation_path, class:'btn btn-success' %>
+        <li>
+            <a href="#" id="inbox">Inbox [<%=current_user.unread_inbox_count %>]</a>
         </li>
 
         <li>
-            <a href="#">Sent</a>
+            <a href="#" id="sent">Sent</a>
         </li>
         <li>
-            <a href="#">Trash</a>
+            <a href="#" id="trash">Trash</a>
         </li>
     </ul>
 </div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 col-lg-offset-2 col-md-offset-2">
-    <% @conversations.each do |conversation| %>
-    <div>
-        <%= link_to conversation.subject, conversation_path(conversation) %>
-    </div>
-    <% end %>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+    <div id="messages-container"></div>
 </div>
+<script>
+
+    $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/inbox') %>");
+
+    $("#inbox").click(function () {
+        $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/inbox') %>");
+    });
+
+    $("#sent").click(function () {
+        $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/sendbox') %>");
+    });
+
+    $("#trash").click(function () {
+        $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/trash') %>");
+    });
+</script>
