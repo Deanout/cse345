@@ -1,0 +1,25 @@
+<!-- Preview Image -->
+<!-- Title -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 style="text-align:center">
+            <%= link_to event.title, events_path %></h1>
+        <p class="lead" style="text-align:center">Posted by
+            <a href="#"><%= link_to User.find(event.user_id).username, "#" %></a>
+            <span class="glyphicon glyphicon-time"></span>
+            <%= event.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
+        <p></div>
+        <div class="panel-body">
+            <p>
+                <strong>This event starts at
+                    <%= event.event_time.strftime("%l:%M %p on %B %d, %Y ") %>.</strong>
+                <%= link_to "Read More", event, class: 'btn btn-primary pull-right'%>
+                <% if current_user && is_admin? %>
+                <%= link_to 'Edit Event', edit_event_path(event), :'data-no-turbolink' => true, class: 'btn btn-warning pull-right' %>
+                <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
+                <% end %></p>
+        </div>
+        <div class="panel-footer event-body"><%= event.body.truncate_words(150) %></div>
+    </div>
+
+    <br><br>

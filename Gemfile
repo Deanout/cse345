@@ -42,6 +42,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
 gem 'friendly_id'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
+gem 'will_paginate'
 #####
 
 group :development, :test do

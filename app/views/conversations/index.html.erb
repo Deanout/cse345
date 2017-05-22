@@ -20,18 +20,26 @@
     <div id="messages-container"></div>
 </div>
 <script>
-
     $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/inbox') %>");
-
+    $('#inbox').parent().addClass("active")
     $("#inbox").click(function () {
         $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/inbox') %>");
+        $('#inbox').parent().addClass("active")
+        $('#sent').parent().removeClass("active")
+        $('#trash').parent().removeClass("active")
     });
 
     $("#sent").click(function () {
         $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/sendbox') %>");
+        $('#sent').parent().addClass("active")
+        $('#inbox').parent().removeClass("active")
+        $('#trash').parent().removeClass("active")
     });
 
     $("#trash").click(function () {
         $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/trash') %>");
+        $('#trash').parent().addClass("active")
+        $('#inbox').parent().removeClass("active")
+        $('#sent').parent().removeClass("active")
     });
 </script>
