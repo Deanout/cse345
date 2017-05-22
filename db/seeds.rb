@@ -5,14 +5,30 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-50.times do |counter|
+tag = Tag.create(:name => "Trade")
+tag.save
+tag = Tag.create(:name => "Tutors")
+tag.save
+tag = Tag.create(:name => "Moving")
+tag.save
+tag = Tag.create(:name => "Roommates")
+tag.save
+tag = Tag.create(:name => "Other")
+tag.save
+user = User.create(:email => "dean@example.com",
+:username => "Dean",
+:password => 'password',
+:student_id => 7056,
+:admin => true)
+user.save
+25.times do |counter|
   user = User.create(:email => Forgery('email').address,
   :username => Forgery('name').last_name,
   :password => 'password',
   :student_id => Random.rand(1000..9999))
   user.save
 end
-50.times do |counter|
+25.times do |counter|
   counter = counter + 1
   event = Event.create(
   :title => Forgery(:lorem_ipsum).words(10),
