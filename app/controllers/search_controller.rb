@@ -4,13 +4,21 @@ class SearchController < ApplicationController
     @posts = Post.all
     @tags = Tag.all
     if params[:search]
-      @events = Event.search(params[:search]).order("created_at DESC")
-      @posts = Post.search(params[:search]).order("created_at DESC")
-      @tags = Tag.search(params[:search]).order("created_at DESC")
+      @events = Event.search(params[:search])
+      @posts = Post.search(params[:search])
+
+      if @events.count > 0
+        @results = @events
+        if @posts.count > 0
+          @results = (@events + @posts).sort(&:created_at)
+        else
+        end
+      elsif @posts.count > 0
+        @results = @posts
+      end
     else
-      @events = @events.order('created_at DESC')
-      @posts = @posts.order('created_at DESC')
-      @tags = @tags.order('created_at DESC')
+      @eposts = @events.merge(@posts)
+      @results = @eposts.merge(@tags).order('created_at DESC')
     end
   end
 end

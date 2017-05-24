@@ -5,6 +5,17 @@ class Post < ApplicationRecord
 
   def self.search(search)
     @posts = where("title LIKE ?", "%#{search}%")
-    @posts = where("body LIKE ?", "%#{search}%")
+    @posts2 = where("body LIKE ?", "%#{search}%")
+    @posts3 = []
+
+    Post.all.each do |post|
+      if post.tags.where("name LIKE ?", "%#{search}%") != []
+        @posts3.push(post)
+      else
+      end
+    end
+      @posts = @posts + @posts2
+      @posts = @posts + @posts3
+      @posts = @posts.uniq
   end
 end

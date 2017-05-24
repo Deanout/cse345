@@ -1,7 +1,7 @@
 <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-2 col-md-offset-2">
-<% if @events.present? %>
-<% @events.each do |event| %>
-<%= event.title %>
+<% if @results.present? %>
+<% @results.each do |result| %>
+<%= result.title %>
 <br>
 <% end %>
 <% else %>
@@ -20,3 +20,4 @@
 </div>
 <% end %>
 </div>
+<%= @posts.count %>
