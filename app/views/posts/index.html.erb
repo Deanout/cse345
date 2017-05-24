@@ -1,31 +1,25 @@
-<p id="notice"><%= notice %></p>
+<% @posts.each do |post| %>
+<!-- Preview Image -->
+<!-- Title -->
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h1 style="text-align:center">
+            <%= link_to post.title, posts_path %></h1>
+        <p class="lead" style="text-align:center">Posted by
+            <a href="#"><%= link_to User.find(post.user_id).username, "#" %></a>
+            <span class="glyphicon glyphicon-time"></span>
+            <%= post.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
+        <p></div>
+        <div class="panel-body">
+            <p>
+                <%= link_to "Read More", post, class: 'btn btn-primary pull-right'%>
+                <% if current_user && is_admin? %>
+                <%= link_to 'Edit post', edit_post_path(post), :'data-no-turbolink' => true, class: 'btn btn-warning pull-right' %>
+                <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
+                <% end %></p>
+        </div>
+        <div class="panel-footer post-body"><%= post.body.truncate_words(150) %></div>
+    </div>
 
-<h1>Posts</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.user %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
+    <br><br>
+<% end %>
