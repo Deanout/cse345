@@ -9,11 +9,26 @@
                 <a href="#"><%= link_to User.find(@event.user_id).username, "#" %></a>
                 <span class="glyphicon glyphicon-time"></span>
                 <%= @event.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
-            <p></div>
-              <div class="panel-body">
-                <p><strong>This event starts at <%= @event.event_time.strftime("%l:%M %p on %B %d, %Y ") %>.</strong>
-                <%= link_to 'All Events', events_path, class: 'btn btn-primary pull-right' %></p>
-              </div>
-              <div class="panel-footer event-body"><%= @event.body %></div>
+        </div>
+        <div class="panel-body">
+            <p>
+                <strong>This event starts at
+                    <%= @event.event_time.strftime("%l:%M %p on %B %d, %Y ") %>.</strong>
+                <div class="btn-container">
+                    <%= link_to 'All Events', events_path, class: 'btn btn-primary pull-right' %></p>
+                <%= link_to "Register", attendees_register_path(:event_id => @event.id, :user_id => current_user.id), method: :get, class:'btn btn-success pull-right', :data => { :reload => true } %>
+            </div>
+        </div>
+        <div class="panel-footer event-body"><%= @event.body %></div>
+
+        <div class="well" style="text-align:center">
+          <h3 style="text-align:center">Users Attending this Event </h3>
+          <hr>
+          <% @event.attendees.each do |attendee| %>
+          <container style="padding:1em">
+          <%= link_to User.find(attendee.user_id).username, "#" %>
+          </container>
+          <% end %>
         </div>
     </div>
+</div>

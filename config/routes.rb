@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
+  get 'attendees/register'
+
+  get 'attendees/deregister'
+
   resources :tags
   resources :posts
-  resources :events
+  resources :events do
+    resources :attendees
+    member do
+      get 'register', to: 'events#register'
+      get 'deregister', to: 'events#deregister'
+    end
+  end
   devise_for :users
   get 'home/index'
   get 'search', to: :index, controller: 'search'

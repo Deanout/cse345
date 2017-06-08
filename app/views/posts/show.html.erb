@@ -1,23 +1,25 @@
 <p id="notice"><%= notice %></p>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h1 style="text-align:center"><%= link_to @post.title, posts_path %></h1>
+            <h3 style="text-align:center">Posted by:
+                <%= link_to @post.user.username, "#" %>
+                <span class="glyphicon glyphicon-time"></span><%= @post.created_at.strftime(" on %B %d, %Y at %l:%M %p") %>
+                <div class="pull-right">
+                    <%= link_to 'Edit', edit_post_path(@post), class:'btn btn-warning pull-right'%>
+                    <%= link_to 'Back', posts_path, class:"btn btn-primary pull-right" %>
+                </div>
+            </div>
+            <div class="panel-body">
+                <%= @post.body %>
+            </div>
+            <div class="panel-footer">
+                <strong>Tags:</strong>
+                <% @post.tags.each do |tag| %>
+                <%= link_to tag.name, "#" %>
+                <% end %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @post.user.username %>
-</p>
-<p>
-  <strong>Tags:</strong>
-  <% @post.tags.each do |tag| %>
-  <%= tag.name %>
-  <% end %>
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+            </div>
+        </div>
+    </div>

@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
-  has_many :users
+  has_many :attendees
+  belongs_to :user
   self.per_page = 5
 # This will work for sqlite. For Psql production, change LIKE to ILIKE
   def self.search(search)

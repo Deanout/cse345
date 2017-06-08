@@ -5,8 +5,7 @@ class User < ApplicationRecord
            :recoverable, :rememberable, :trackable, :validatable, authentication_keys: [:login]
     attr_writer :login
     scope :online, lambda{ where("updated_at > ?", 10.minutes.ago) }
-    belongs_to :event
-
+    has_many :events
     acts_as_messageable
 
 
