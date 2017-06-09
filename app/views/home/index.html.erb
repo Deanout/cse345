@@ -1,21 +1,27 @@
 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-    <h2>Upcoming Events</h2>
+    <h2 style="text-align:center"><%= link_to "Upcoming Events", events_path %></h2>
     <% @events.each do |event| %>
-    <div class="well">
+    <div class="panel panel-default">
+        <div class="panel-heading">
         <h3 style="text-align:center"><%= link_to event.title, event %></h3>
+      </div>
+      <div class="panel-body">
         <p>This event starts at
             <%= event.event_time.strftime("%l:%M %p on %B %d, %Y ") %>.</p>
-        <hr>
+          </div>
+          <div class="panel-footer event-body">
         <p><%= event.body.truncate_words(75) %></p>
         <div style="text-align:center">
             <%= link_to "Read More", event, class: "btn btn-primary" %>
         </div>
+      </div>
+
     </div>
     <% end %>
 </div>
 
 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-    <h2>Recent Postings</h2>
+    <h2 style="text-align:center"><%= link_to "Recent Postings", posts_path %></h2>
     <div class="well">
         <% @posts.each do |post| %>
         <h4 style="text-align:center"><%= link_to post.title, post %>
