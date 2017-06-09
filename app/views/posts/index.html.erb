@@ -19,7 +19,7 @@
         <div class="panel-body">
             <p>
                 <%= link_to "Read More", post, class: 'btn btn-primary pull-right'%>
-                <% if current_user && is_admin? %>
+                <% if current_user || is_admin? %>
                 <%= link_to 'Edit post', edit_post_path(post), :'data-no-turbolink' => true, class: 'btn btn-warning pull-right' %>
                 <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
                 <% end %></p>

@@ -1,0 +1,16 @@
+
+<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 col-lg-offset-1 col-md-offset-1">
+    <h1 style="text-align:center">Your Listings</h1>
+    <div class="well">
+        <% @posts.each do |post| %>
+        <h4 style="text-align:center"><%= link_to post.title, post %> posted
+            <%= post.created_at.strftime("on %B %d, %Y at %l:%M %p") %>
+                  <%= link_to "View", post, class: 'btn btn-primary pull-right'%>
+                  <% if current_user || is_admin? %>
+                  <%= link_to 'Edit', edit_post_path(post), :'data-no-turbolink' => true, class: 'btn btn-warning pull-right' %>
+                  <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
+                  <% end %>
+        <hr>
+        <% end %>
+    </div>
+</div>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'students/create'
-
+  resources :users, only: [:show]
   get 'students/set_students'
 
   resources :universities do

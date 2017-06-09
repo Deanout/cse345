@@ -1,1 +1,28 @@
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <h2>Upcoming Events</h2>
+    <% @events.each do |event| %>
+    <div class="well">
+        <h3 style="text-align:center"><%= link_to event.title, event %></h3>
+        <p>This event starts at
+            <%= event.event_time.strftime("%l:%M %p on %B %d, %Y ") %>.</p>
+        <hr>
+        <p><%= event.body.truncate_words(75) %></p>
+        <div style="text-align:center">
+            <%= link_to "Read More", event, class: "btn btn-primary" %>
+        </div>
+    </div>
+    <% end %>
+</div>
 
+<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+    <h2>Recent Postings</h2>
+    <div class="well">
+        <% @posts.each do |post| %>
+        <h4 style="text-align:center"><%= link_to post.title, post %>
+            <%= post.created_at.strftime("%l:%M %p") %>
+            by
+            <%= User.find(post.user_id).username %></h4>
+        <hr>
+        <% end %>
+    </div>
+</div>
