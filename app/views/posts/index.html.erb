@@ -1,10 +1,7 @@
 <% if params.has_key?(:tag) %>
 <h1 style="text-align:center"><%= params[:tag].titleize %></h1>
-<% else %>
-<h1 style="text-align:center">All Posts</h1>
-<% end %>
 <% if @posts.present? %>
-<% @posts.each do |post| %>
+<% @posts.sort_by(&:created_at).reverse.each do |post| %>
 <div class="panel panel-default">
     <div class="panel-heading">
         <h1 style="text-align:center">
@@ -36,4 +33,38 @@
         <%= link_to "create", new_post_path %>
         your own.
     </div>
+    <% end %>
+
+<% else %>
+    <h1 style="text-align:center">All Posts</h1>
+    <% Tag.all.each do |tag| %>
+    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+        <div class="well">
+          <h2 style="text-align:center"><%= link_to tag.name, posts_path(:tag => tag.name) %></h2>
+          <hr>
+        <% @posts = []
+        Post.all.each do |post|
+          if post.tags.where("name LIKE ?", "%#{tag.name}%") != []
+            @posts.push(post)
+          else
+          end
+        end
+      %>
+            <% if @posts.count > 0 %>
+            <% @posts.sort_by(&:created_at).last(3).each do |post| %>
+            <h4 style="text-align:center">
+                <%= link_to post.title.titleize, post %>
+            </h4>
+            <p>by
+                <%= User.find(post.user_id).username %><%= post.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
+            <hr>
+            <% end %>
+            <div style="text-align:center">
+                <%= link_to tag.name, posts_path(:tag => tag.name), class:"btn btn-primary" %>
+            </div>
+        </div>
+    </div>
+    <% end %>
+    <!-- End of Posts Section-->
+    <% end %>
     <% end %>
