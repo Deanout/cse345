@@ -1,3 +1,9 @@
+<% if params.has_key?(:tag) %>
+<h1 style="text-align:center"><%= params[:tag].titleize %></h1>
+<% else %>
+<h1 style="text-align:center">All Posts</h1>
+<% end %>
+<% if @posts.present? %>
 <% @posts.each do |post| %>
 <!-- Preview Image -->
 <!-- Title -->
@@ -22,4 +28,15 @@
     </div>
 
     <br><br>
-<% end %>
+    <% end %>
+<% else %>
+    <div class="alert alert-dismissible alert-danger text-center alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Oh snap!</strong>
+        No posts are tagged with
+        <%= params[:tag] %>
+        at the moment. Please try again later, or
+        <%= link_to "create", new_post_path %>
+        your own.
+    </div>
+    <% end %>

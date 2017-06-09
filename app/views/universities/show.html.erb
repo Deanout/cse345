@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= link_to @university.name, universities_path %></h1>
+
+<p>
+    <strong><%= @university.city %></strong>
+    |
+    <%= @university.zip %>
+    |
+    <%= link_to 'Edit', edit_university_path(@university) %>
+</p>
+
+<!-- /.row -->
+<!-- Blog Comments -->
+<div class="container" style="margin-bottom:20em">
+    <div class="row">
+        <div class="col-md-10">
+            <h2 class="page-header"><%= pluralize(@university.students.count, "Student") %></h2>
+            <section class="student-list">
+                <%= render 'students/form', :university => @university %>
+                <div class="student-container">
+                    <div id="infinite-scrolling">
+                        <%= render @students.order(student_id: :asc) %>
+                    </div>
+                </div>
+                <%= will_paginate(@students) %>
+            </section>
+        </div>
+    </div>
+</div>

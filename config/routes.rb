@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'students/create'
+
+  get 'students/set_students'
+
+  resources :universities do
+    resources :students
+  end
   get 'attendees/register'
 
   get 'attendees/deregister'

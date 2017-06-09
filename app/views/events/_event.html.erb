@@ -3,7 +3,7 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <h1 style="text-align:center">
-            <%= link_to event.title, events_path %></h1>
+            <%= link_to event.title, event %></h1>
         <p class="lead" style="text-align:center">Posted by
             <a href="#"><%= link_to User.find(event.user_id).username, "#" %></a>
             <span class="glyphicon glyphicon-time"></span>

@@ -4,7 +4,17 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = []
+    if params.has_key?(:tag)
+      Post.all.each do |post|
+        if post.tags.where("name LIKE ?", "%#{params[:tag]}%") != []
+          @posts.push(post)
+        else
+        end
+      end
+    else
+      @posts = Post.all
+    end
   end
 
   # GET /posts/1
@@ -60,6 +70,7 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post

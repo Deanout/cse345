@@ -9,7 +9,7 @@ class AttendeesController < ApplicationController
   end
 
   def deregister
-    @event.attendees.delete(params[:user_id])
+    @event.attendees.where(:user_id => params[:user_id]).destroy_all
     respond_to do |format|
       format.js
       format.html { redirect_to :back, notice: "Successfully deregistered for the event!"}

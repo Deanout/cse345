@@ -1,0 +1,7 @@
+<p>Student ID: [<%= student.student_id %>] |
+  <% if User.all.where(:student_id => student.student_id) == [] %>
+  Unclaimed
+  <% else %>
+  Claimed
+  <% end %>
+</p>

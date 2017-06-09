@@ -2,22 +2,7 @@
     <div id="events">
         <%= render @events %>
     </div>
-    <div id="infinite-scrolling">
+    <div>
         <%= will_paginate %>
     </div>
 </div>
-
-
-<script>
-$('#events').append('<%= j render @events %>');
-</script>
-<% if @events.next_page %>
-<script>
-  $('.pagination').replaceWith('<%= j will_paginate @events %>');
-  </script>
-<% else %>
-<script>
-  $(window).off('scroll');
-  $('.pagination').remove();
-  </script>
-<% end %>

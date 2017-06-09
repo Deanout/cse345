@@ -18,6 +18,7 @@ class User < ApplicationRecord
     friendly_id :username, use: :slugged
 
     validate :validate_username
+    validate :validate_student_id
     def validate_username
         errors.add(:username, :invalid) if User.where(email: username).exists?
     end
@@ -42,5 +43,9 @@ class User < ApplicationRecord
                 where(username: conditions[:username]).first
             end
         end
+    end
+
+    def validate_student_id
+      errors.add(:student_id, :invalid) if Student.all.where(:student_id => student_id) == [] || User.all.where(:student_id => student_id) != []
     end
 end
