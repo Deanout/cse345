@@ -18,4 +18,14 @@ class Post < ApplicationRecord
       @posts = @posts + @posts3
       @posts = @posts.uniq
   end
+
+  def self.expire
+    @posts = Post.all
+    @posts.each do |post|
+      if post.exp_date.strftime('%d%b%Y') <= Date.today.strftime('%d%b%Y') && post.exp_time.strftime('%H%M%S%N') < Time.now.strftime('%H%M%S%N')
+        post.destroy!
+      end
+    end
+    puts 'ran!'
+  end
 end

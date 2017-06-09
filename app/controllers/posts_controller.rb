@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
-
+  before_action :expire, only: [:show, :index]
   # GET /posts
   # GET /posts.json
   def index
@@ -79,6 +79,9 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :user_id, tag_ids: [])
+      params.require(:post).permit(:title, :body, :user_id, :exp_date, :exp_time, tag_ids: [])
+    end
+    def expire
+      Post.expire
     end
 end

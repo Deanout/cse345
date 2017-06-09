@@ -70,6 +70,7 @@
                     </a>
                     <ul class="dropdown-menu" role="menu">
                         <% if is_admin? %>
+                        <li> <a href="<%= user_path(current_user) %>">My Posts</a></li>
                         <li>
                             <a href="<%= new_tag_path %>">New Tag</a>
                         </li>
@@ -83,6 +84,7 @@
                         <li><%= link_to "Account Management", edit_user_registration_path %></li>
                         <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
                         <% else %>
+                        <li><a href="<%= user_path(current_user) %>">My Posts</a></li>
                         <li><%= link_to "Account Management", edit_user_registration_path %></li>
                         <li role="separator" class="divider"></li>
                         <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>

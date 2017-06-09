@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  before_action :expire
   def search
     @events = Event.all
     @posts = Post.all
@@ -20,5 +21,9 @@ class SearchController < ApplicationController
       @eposts = @events.merge(@posts)
       @results = @eposts.merge(@tags).order('created_at DESC')
     end
+  end
+  private
+  def expire
+    Post.expire
   end
 end
