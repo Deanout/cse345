@@ -5,8 +5,6 @@
 <% end %>
 <% if @posts.present? %>
 <% @posts.each do |post| %>
-<!-- Preview Image -->
-<!-- Title -->
 <div class="panel panel-default">
     <div class="panel-heading">
         <h1 style="text-align:center">
@@ -26,7 +24,6 @@
         </div>
         <div class="panel-footer post-body"><%= post.body.truncate_words(150) %></div>
     </div>
-
     <br><br>
     <% end %>
 <% else %>

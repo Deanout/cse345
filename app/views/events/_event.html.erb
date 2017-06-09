@@ -4,8 +4,16 @@
     <div class="panel-heading">
         <h1 style="text-align:center">
             <%= link_to event.title, event %></h1>
+            <% if current_user %>
+              <% if event.attendees.where(:user_id => current_user.id) == [] %>
+                <%= link_to "Register", attendees_register_path(:event_id => event.id, :user_id => current_user.id), method: :get, class:'btn btn-success pull-right', :data => { :reload => true } %>
+              <% else %>
+                <%= link_to "Deregister", attendees_deregister_path(:event_id => event.id, :user_id => current_user.id), method: :get, class: 'btn btn-danger pull-right', :data => { :reload => true} %>
+              <% end %>
+            <% end %>
         <p class="lead" style="text-align:center">Posted by
             <a href="#"><%= link_to User.find(event.user_id).username, "#" %></a>
+
             <span class="glyphicon glyphicon-time"></span>
             <%= event.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
         <p></div>
