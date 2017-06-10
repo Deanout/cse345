@@ -20,7 +20,9 @@
         <div class="panel-body">
             <p>
                 <strong>This event starts at
-                    <%= event.event_time.strftime("%l:%M %p on %B %d, %Y ") %>.</strong>
+                    <%= event.event_time.strftime(" %l:%M %p on ") %>
+                    <%= event.event_date.strftime("%B %d, %Y") %>
+                  .</strong>
                 <%= link_to "Read More", event, class: 'btn btn-primary pull-right'%>
                 <% if current_user && is_admin? %>
                 <%= link_to 'Edit Event', edit_event_path(event), :'data-no-turbolink' => true, class: 'btn btn-warning pull-right' %>
