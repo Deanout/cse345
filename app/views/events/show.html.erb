@@ -13,7 +13,9 @@
         <div class="panel-body">
             <p>
                 <strong>This event starts at
-                    <%= @event.event_time.strftime("%l:%M %p on %B %d, %Y ") %>.</strong>
+                    <%= @event.event_time.strftime(" %l:%M %p on ") %>
+                    <%= @event.event_date.strftime("%B %d, %Y") %>
+                  .</strong>
                 <div class="btn-container">
                     <%= link_to 'All Events', events_path, class: 'btn btn-primary pull-right' %></p>
                   <% if current_user %>
