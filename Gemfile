@@ -43,12 +43,12 @@ gem 'simple_form'
 gem 'friendly_id'
 gem 'mailboxer', github: 'mailboxer/mailboxer'
 gem 'will_paginate'
+gem 'forgery'
 #####
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'forgery'
 end
 
 group :development do

@@ -1,1 +1,1 @@
-RAILS_ENV=production rails assets:precompile && puma -C config/puma/production.rb
+RAILS_ENV=production rails assets:precompile && puma -C config/puma/production.rb -d

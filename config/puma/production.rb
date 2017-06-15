@@ -8,7 +8,7 @@ end
 
 directory home_dir
 environment 'production'
-daemonize
+
 pidfile path('tmp/pids/puma.pid')
 state_path path('tmp/pids/puma.state')
 stdout_redirect path('log/puma.log'), path('log/error.puma.log'), true

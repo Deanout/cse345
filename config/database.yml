@@ -22,10 +22,10 @@ test:
 
 production:
   <<: *default
-  database: deanout
+  database: cse345
   adapter: postgresql
   encoding: unicode
   pool: 10
   username: deanout
-  password: cse345
-  host: deanout.c51ezfqpiipt.us-east-2.rds.amazonaws.com
+  password: cse345password
+  host: cse345.c51ezfqpiipt.us-east-2.rds.amazonaws.com
