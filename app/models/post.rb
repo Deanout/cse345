@@ -4,14 +4,27 @@ class Post < ApplicationRecord
   has_many :tags, through: :taggables
 
   def self.search(search)
-    @posts = where("title LIKE ?", "%#{search}%")
-    @posts2 = where("body LIKE ?", "%#{search}%")
-    @posts3 = []
+    if Rails.env.production?
+      @posts = where("title ILIKE ?", "%#{search}%")
+      @posts2 = where("body ILIKE ?", "%#{search}%")
+      @posts3 = []
 
-    Post.all.each do |post|
-      if post.tags.where("name LIKE ?", "%#{search}%") != []
-        @posts3.push(post)
-      else
+      Post.all.each do |post|
+        if post.tags.where("name ILIKE ?", "%#{search}%") != []
+          @posts3.push(post)
+        else
+        end
+      end
+    else
+      @posts = where("title LIKE ?", "%#{search}%")
+      @posts2 = where("body LIKE ?", "%#{search}%")
+      @posts3 = []
+
+      Post.all.each do |post|
+        if post.tags.where("name LIKE ?", "%#{search}%") != []
+          @posts3.push(post)
+        else
+        end
       end
     end
       @posts = @posts + @posts2
