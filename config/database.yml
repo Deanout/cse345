@@ -22,4 +22,10 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: deanout
+  adapter: postgresql
+  encoding: unicode
+  pool: 10
+  username: deanout
+  password: cse345
+  host: deanout.c51ezfqpiipt.us-east-2.rds.amazonaws.com
