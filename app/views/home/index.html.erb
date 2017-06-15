@@ -24,7 +24,7 @@
 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
     <h2 style="text-align:center"><%= link_to "Recent Postings", posts_path %></h2>
     <div class="well">
-      <% if @posts.count > 1 %>
+      <% if @posts.count >= 1 %>
         <% @posts.each do |post| %>
         <h4 style="text-align:center"><%= link_to post.title, post %>
             <%= post.created_at.strftime("%l:%M %p") %>

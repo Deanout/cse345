@@ -38,6 +38,7 @@
 <% else %>
     <h1 style="text-align:center">All Posts</h1>
     <% Tag.all.each do |tag| %>
+    <% if tag.posts.count > 0 %>
     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12" style="height:20em;overflow-y:scroll;margin-bottom:5em">
         <div class="well">
             <h2 style="text-align:center"><%= link_to tag.name.pluralize, posts_path(:tag => tag.name) %></h2>
@@ -66,5 +67,6 @@
     </div>
     <% end %>
     <!-- End of Posts Section-->
+    <% end %>
     <% end %>
     <% end %>

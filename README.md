@@ -16,11 +16,12 @@ https://gorails.com/setup/windows/10
 If using Ubuntu, ignore the initial Windows bash setup.
 
 * Database Creation and Initialization
-To initialize the database in development mode, run the following command:
-rails db:migrate
-To initialize the database in development mode, run the following command:
-RAILS_ENV=production rails db:migrate
+Command to create, migrate, and seed the database:
+rails db:drop && rails db:migrate && rails db:seed
 
 * Deployment instructions
-Deploying
-* ...
+To run the server:
+rails s
+
+* Accessing Local Host server
+url by default is is: localhost:3000
