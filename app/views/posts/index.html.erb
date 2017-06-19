@@ -70,7 +70,7 @@
                 <%= link_to post.title.titleize, post %>
             </h4>
             <p>by
-                <%= User.find(post.user_id).username %><%= post.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
+                <%= User.find(post.user_id).username %><%= post.created_at.strftime(" on %B %d, %Y at %l:%M %p") %></p>
             <hr>
             <% end %>
             <div style="text-align:center">
