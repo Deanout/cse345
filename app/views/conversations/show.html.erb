@@ -12,7 +12,8 @@
 
 <%= form_tag conversation_messages_path(@conversation), method: :post do %>
 <div>
-    <%= text_area_tag :body %>
+    <%= text_area_tag :body, nil, placeholder: "Enter the body of your message here...", class:'form-control', style:'', rows: 5 %>
 </div>
-<%= submit_tag %>
+<%= submit_tag "Reply", class:'btn btn-success pull-right' %>
+<%= link_to "All Conversations", conversations_path, class:'btn btn-primary' %>
 <% end %>

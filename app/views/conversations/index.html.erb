@@ -11,9 +11,6 @@
         <li>
             <a href="#" id="sent">Sent</a>
         </li>
-        <li>
-            <a href="#" id="trash">Trash</a>
-        </li>
     </ul>
 </div>
 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
@@ -26,20 +23,14 @@
         $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/inbox') %>");
         $('#inbox').parent().addClass("active")
         $('#sent').parent().removeClass("active")
-        $('#trash').parent().removeClass("active")
+
     });
 
     $("#sent").click(function () {
         $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/sendbox') %>");
         $('#sent').parent().addClass("active")
         $('#inbox').parent().removeClass("active")
-        $('#trash').parent().removeClass("active")
+
     });
 
-    $("#trash").click(function () {
-        $('#messages-container').html("<%= escape_javascript(render partial: 'conversations/trash') %>");
-        $('#trash').parent().addClass("active")
-        $('#inbox').parent().removeClass("active")
-        $('#sent').parent().removeClass("active")
-    });
 </script>

@@ -1,5 +1,5 @@
 <% @sent.each do |conversation| %>
-<div>
-    <%= link_to conversation.subject, conversation_path(conversation) %>
+<div class="well">
+    <%= link_to conversation.subject, conversation_path(conversation) %> to <%= User.find(conversation.receipts.first.receiver_id).username %>
 </div>
 <% end %>

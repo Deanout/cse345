@@ -8,7 +8,6 @@ class ConversationsController < ApplicationController
     @sent = @mailbox.sentbox
     @trash = @mailbox.trash
     @conversations = @mailbox.inbox
-
   end
 
   def show
