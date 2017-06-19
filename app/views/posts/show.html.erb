@@ -13,16 +13,19 @@
             <div class="panel-body">
                 <%= @post.body %>
             </div>
-            <div class="panel-footer">
-                <strong>Tags:</strong>
-                <% @post.tags.each do |tag| %>
-                <%= link_to tag.name, posts_path(:tag => tag.name) %>
-                <% end %>
-                <div class="pull-right btn-group">
-                    <% if current_user && @post.user_id == current_user.id %>
-                    <%= link_to 'Edit', edit_post_path(@post), class:'btn btn-warning pull-right'%>
+            <div class="panel-footer" style="height:4em">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4">
+                    <strong>Tags:</strong>
+                    <% @post.tags.each do |tag| %>
+                    <%= link_to tag.name, posts_path(:tag => tag.name) %>
                     <% end %>
-                    <%= link_to 'Back', posts_path, class:"btn btn-primary pull-right" %>
+                </div>
+                <div class="btn-group pull-right">
+                    <%= link_to "Read More", @post, class: 'btn btn-primary pull-right'%>
+                    <% if current_user && @post.user_id == current_user.id || current_user && is_admin? %>
+                    <%= link_to 'Edit post', edit_post_path(@post), :'data-no-turbolink' => true, class: 'btn btn-warning pull-right' %>
+                    <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
+                    <% end %>
                 </div>
             </div>
         </div>
