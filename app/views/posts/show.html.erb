@@ -6,12 +6,9 @@
             <h3 style="text-align:center">Posted by:
                 <%= link_to @post.user.username, "#" %>
                 <span class="glyphicon glyphicon-time"></span><%= @post.created_at.strftime(" on %B %d, %Y at %l:%M %p") %>
-                <div class="pull-right">
-                  <% if current_user && @post.user_id == current_user.id %>
-                    <%= link_to 'Edit', edit_post_path(@post), class:'btn btn-warning pull-right'%>
-                    <% end %>
-                    <%= link_to 'Back', posts_path, class:"btn btn-primary pull-right" %>
-                </div>
+                <p>Expires
+                    <%= @post.exp_date.strftime("on %B %d, %Y") %><%= @post.exp_time.strftime(" at %l:%M %p") %></p>
+
             </div>
             <div class="panel-body">
                 <%= @post.body %>
@@ -19,9 +16,14 @@
             <div class="panel-footer">
                 <strong>Tags:</strong>
                 <% @post.tags.each do |tag| %>
-                <%= link_to tag.name, "#" %>
+                <%= link_to tag.name, posts_path(:tag => tag.name) %>
                 <% end %>
-
+                <div class="pull-right btn-group">
+                    <% if current_user && @post.user_id == current_user.id %>
+                    <%= link_to 'Edit', edit_post_path(@post), class:'btn btn-warning pull-right'%>
+                    <% end %>
+                    <%= link_to 'Back', posts_path, class:"btn btn-primary pull-right" %>
+                </div>
             </div>
         </div>
     </div>

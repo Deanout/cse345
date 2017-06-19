@@ -4,7 +4,7 @@ class AttendeesController < ApplicationController
     @user = @event.attendees.create(:user_id => params[:user_id])
     respond_to do |format|
       format.js
-      format.html { redirect_to :back, notice: "Successfully registered for the event for #{current_user}!"}
+      format.html { redirect_to :back, notice: "You successfully registered for the event, #{current_user.username}!"}
     end
   end
 
@@ -12,7 +12,7 @@ class AttendeesController < ApplicationController
     @event.attendees.where(:user_id => params[:user_id]).destroy_all
     respond_to do |format|
       format.js
-      format.html { redirect_to :back, notice: "Successfully deregistered for the event!"}
+      format.html { redirect_to :back, notice: "You successfully deregistered for the event, #{current_user.username}!"}
     end
   end
   private

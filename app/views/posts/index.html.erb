@@ -6,18 +6,25 @@
     <div class="panel-heading">
         <h1 style="text-align:center">
             <%= link_to post.title, post %></h1>
-        <p class="lead" style="text-align:center">Posted by
-            <a href="#"><%= link_to User.find(post.user_id).username, "#" %></a>
-            <span class="glyphicon glyphicon-time"></span>
-            <%= post.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
-        <p></div>
+
+            <p class="lead" style="text-align:center">Posted by
+                <a href="#"><%= link_to User.find(post.user_id).username, "#" %></a>
+                <span class="glyphicon glyphicon-time"></span>
+                <%= post.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
+            <p></div>
+
         <div class="panel-body">
-            <p>
+          <div class="col-lg-6 col-md-6">
+            Expires
+                <%= post.exp_date.strftime("on %B %d, %Y") %><%= post.exp_time.strftime(" at %l:%M %p") %>
+          </div>
+            <div class="btn-group pull-right">
                 <%= link_to "Read More", post, class: 'btn btn-primary pull-right'%>
-                <% if current_user || is_admin? %>
+                <% if current_user || current_user && is_admin? %>
                 <%= link_to 'Edit post', edit_post_path(post), :'data-no-turbolink' => true, class: 'btn btn-warning pull-right' %>
                 <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
-                <% end %></p>
+                <% end %>
+            </div>
         </div>
         <div class="panel-footer post-body"><%= post.body.truncate_words(150) %></div>
     </div>
@@ -45,12 +52,18 @@
             <hr>
         <% @posts = []
         Post.all.each do |post|
-          if post.tags.where("name LIKE ?", "%#{tag.name}%") != []
-            @posts.push(post)
+          if Rails.env.production?
+            if post.tags.where("name ILIKE ?", "%#{tag.name}%") != []
+              @posts.push(post)
+            else
+            end
           else
+            if post.tags.where("name LIKE ?", "%#{tag.name}%") != []
+              @posts.push(post)
+            else
+            end
           end
-        end
-      %>
+        end %>
             <% if @posts.count > 0 %>
             <% @posts.sort_by(&:created_at).last(3).each do |post| %>
             <h4 style="text-align:center">

@@ -4,13 +4,13 @@
     <div class="panel-heading">
         <h1 style="text-align:center">
             <%= link_to event.title, event %></h1>
-            <% if current_user %>
-              <% if event.attendees.where(:user_id => current_user.id) == [] %>
-                <%= link_to "Register", attendees_register_path(:event_id => event.id, :user_id => current_user.id), method: :get, class:'btn btn-success pull-right', :data => { :reload => true } %>
-              <% else %>
-                <%= link_to "Deregister", attendees_deregister_path(:event_id => event.id, :user_id => current_user.id), method: :get, class: 'btn btn-danger pull-right', :data => { :reload => true} %>
-              <% end %>
-            <% end %>
+        <% if current_user %>
+        <% if event.attendees.where(:user_id => current_user.id) == [] %>
+        <%= link_to "Register", attendees_register_path(:event_id => event.id, :user_id => current_user.id), method: :get, class:'btn btn-success pull-right', :data => { :reload => true } %>
+    <% else %>
+        <%= link_to "Deregister", attendees_deregister_path(:event_id => event.id, :user_id => current_user.id), method: :get, class: 'btn btn-danger pull-right', :data => { :reload => true} %>
+        <% end %>
+        <% end %>
         <p class="lead" style="text-align:center">Posted by
             <a href="#"><%= link_to User.find(event.user_id).username, "#" %></a>
 
@@ -18,16 +18,18 @@
             <%= event.created_at.strftime("on %B %d, %Y at %l:%M %p") %></p>
         <p></div>
         <div class="panel-body">
-            <p>
+            <div class="col-lg-6 col-md-6">
                 <strong>This event starts at
                     <%= event.event_time.strftime(" %l:%M %p on ") %>
-                    <%= event.event_date.strftime("%B %d, %Y") %>
-                  .</strong>
+                    <%= event.event_date.strftime("%B %d, %Y.") %></strong>
+            </div>
+            <div class="btn-group pull-right">
                 <%= link_to "Read More", event, class: 'btn btn-primary pull-right'%>
                 <% if current_user && is_admin? %>
                 <%= link_to 'Edit Event', edit_event_path(event), :'data-no-turbolink' => true, class: 'btn btn-warning pull-right' %>
                 <%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right' %>
-                <% end %></p>
+                <% end %>
+            </div>
         </div>
         <div class="panel-footer event-body"><%= event.body.truncate_words(150) %></div>
     </div>
